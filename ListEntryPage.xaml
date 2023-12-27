@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicatieRetete.ListEntryPage"
+              Title="Toate Retetele"
+             BackgroundColor="PeachPuff"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Adauga Reteta"
+ Clicked="OnReteteAddedClicked"/>
+    </ContentPage.ToolbarItems>
+    <ListView  x:Name="listView" 
+              Margin="30"
+ ItemSelected="OnListViewItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                               Grid.Row="0"
+                           Text="{Binding Title}"
+                           FontAttributes="Bold" 
+                              TextColor="Black"
+                               VerticalOptions="Start"
+                               FontSize="Subtitle"/>
+                        <Label Grid.Row="1"
+                           Grid.Column="0"
+                           Text="{Binding Description}"
+                           FontAttributes="Italic"
+                           VerticalOptions="Center"
+                               TextColor="Black"
+                               FontSize="13"/>
+                        <Label Grid.Row="2"
+                           Grid.Column="1"
+                           Text="{Binding Date}"
+                           FontAttributes="Italic"
+                           VerticalOptions="End" 
+                               TextColor="Black"
+                               FontSize="10"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

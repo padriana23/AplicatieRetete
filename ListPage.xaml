@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicatieRetete.ListPage"
+             Title="Adauga Reteta Ta"
+             BackgroundColor="PeachPuff">
+    <StackLayout Margin="30">
+        <Editor Placeholder="Denumire Desert"
+ Text="{Binding Title}"
+ HeightRequest="40" TextColor="Black"
+                FontAttributes="Bold"
+                 BackgroundColor="BlanchedAlmond"/>
+        <Editor Placeholder="Ingrediente"
+ Text="{Binding Description}" AutoSize="TextChanges"
+ HeightRequest="200" TextColor="Black"
+                 BackgroundColor="BlanchedAlmond"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="Adauga in Retetele Tale"
+ Clicked="OnAddButtonClicked" 
+                    FontSize="14" 
+                    FontAttributes="Bold" 
+                    TextColor="Black"
+                    BackgroundColor="LightGreen"/>
+            <Button Grid.Column="1"
+ Text="Editeaza"
+ Clicked="OnSaveButtonClicked"
+                    BackgroundColor="PaleVioletRed"
+                    TextColor="Black"
+                    FontSize="14"
+                    FontAttributes="Bold"/>
+        </Grid>
+
+        <ListView x:Name="listView"
+ Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding Description}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Text="Vezi Retete Salvate" MaximumWidthRequest="300"
+Clicked="OnChooseButtonClicked"
+                BackgroundColor="PaleTurquoise"
+                TextColor="HotPink"
+                FontAttributes="Bold" 
+                FontSize="20"/>
+    </StackLayout>
+</ContentPage>
