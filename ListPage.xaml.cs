@@ -15,21 +15,18 @@ public partial class ListPage : ContentPage
         await App.Database.SaveReteteAsync(slist);
         await Navigation.PopAsync();
     }
-    async void OnAddButtonClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new ProductPage((Retete)
-       this.BindingContext)
-        {
-            BindingContext = new Product()
-        });
-    }
-    async void OnChooseButtonClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new ProductPage((Retete)
-       this.BindingContext)
-        {
-            BindingContext = new Product()
-        });
 
+    async void OnDeleteButtonClicked(object sender, EventArgs e)
+    {
+        var slist = (Retete)BindingContext; // Assuming you're binding to a Retete instance
+        if (slist != null)
+        {
+            bool result = await DisplayAlert("Confirmare", "Esti sigur ca vrei sa stergi aceasta reteta?", "Da", "Nu");
+            if (result)
+            {
+                await App.Database.DeleteReteteAsync(slist);
+                await Navigation.PopAsync();
+            }
+        }
     }
 }
